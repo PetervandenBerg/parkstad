@@ -1,0 +1,39 @@
+<div id="container">
+  <div id="primary" class="site-content">
+    <div id="content" role="main">
+      <article id="post-5" class="post-5 page type-page status-publish hentry">
+        <header class="entry-header">
+          <h1 class="entry-title">Aanwezigheidslijst</h1>
+        </header>
+      </article>
+
+    <h6>Totaal aanwezig</h6>
+    <p><%= @attending %> man </p><br>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Naam</th>
+          <th>Aanwezig</th>
+          <th>Bericht</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @attendances.each do |attendance| %>
+          <tr>
+            <td><%= attendance.user_name %></td>
+            <td><%= attendance.attending %></td>
+            <td><%= attendance.msg %></td>
+              <% if current_user.id == attendance.user_id %>
+            <td><%= link_to 'Verander', edit_event_attendance_path(@event, attendance) %></td>
+              <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+    <%= link_to 'Geef aan of je aanwezig bent', new_event_attendance_path(@event) %>
+</div>
+</div>

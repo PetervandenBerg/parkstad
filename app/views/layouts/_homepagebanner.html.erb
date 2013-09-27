@@ -1,0 +1,102 @@
+<% if user_signed_in? %> 
+  <!-- start banner -->
+  <div id="main" class="wrapper"><div id="slider" class="flexslider">
+      
+  <div class="flex-viewport" style="overflow: hidden; position: relative;"><ul class="slides" style="width: 1200%; -webkit-transition: 0.6s; transition: 0.6s; -webkit-transform: translate3d(-2826px, 0, 0);">
+      <li class="clone" style="width: 1413px; float: left; display: block;">
+        <a href=""><img src="/assets/slide12.jpg" alt=""></a>
+        <div class="flex-holder">
+          <div class="flex-caption">
+            <div>
+              <h1 style="background: #43bd3d;"><a href="" style="color: #fff;">Welkom op de website</a></h1><br>
+              <h1 style="background: #43bd3d;"><a href="" style="color: #fff;">van Parkstad 3</a></h1>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li style="width: 1413px; float: left; display: block;" class="">
+        <a href="http://chaletbouquetins.nl/chalet/"><img src="/assets/slide2.jpg" alt=""></a>
+        <div class="flex-holder">
+          <div class="flex-caption">
+            <div>
+              <h1 style="background: #428cbc;"><a href="" style="color: #fff;">Vorig jaar kampioen</a></h1><br>
+              <h1 style="background: #428cbc;"><a href="" style="color: #fff;">Dit jaar weer</a></h1>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="flex-active-slide" style="width: 1413px; float: left; display: block;">
+        <a href="http://chaletbouquetins.nl/chalet/"><img src="/assets/slide3.jpg" alt=""></a>
+        <div class="flex-holder">
+          <div class="flex-caption">
+            <div>
+              <h1 style="background: #d96f4e;"><a href="/messages/" style="color: #fff;">Klik hier</a></h1><br>
+              <h1 style="background: #d96f4e;"><a href="/messages/" style="color: #fff;">voor de laatste berichten</a></h1>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="" style="width: 1413px; float: left; display: block;">
+        <a href="http://chaletbouquetins.nl/crans-montana/"><img src="assets/slide4.jpg" alt="Ski"></a>
+        <div class="flex-holder">
+          <div class="flex-caption">
+            <div>
+                <h1 style="background: #428cbc;"><a href="/calendar/" style="color: #fff;">Klik hier</a></h1><br>
+                <h1 style="background: #428cbc;"><a href="/calendar/" style="color: #fff;">voor het programma</a></h1>
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </div>
+    <ul class="flex-direction-nav">
+      <li><a class="flex-prev" href="#">Previous</a></li>
+      <li><a class="flex-next" href="#">Next</a></li> </ul>
+  </div> <!-- End of banner -->
+
+  <!-- start slider -->
+  <div class="carouselWrapper">
+    <div class="site-content">
+      <div id="carousel" class="flexsliders">
+        <div class="flex-viewport" style="overflow: hidden; position: relative;">
+          <ul class="slides" style="width: 800%; -webkit-transition: 0s; transition: 0s; -webkit-transform: translate3d(0px, 0, 0);">
+            <li class="" style="width: 215px; float: left; display: block;"><img src="/assets/slide12_thumb.jpg" alt="Exclusief chalet"></li>
+            <li class="flex-active-slide" style="width: 215px; float: left; display: block;"><img src="/assets/slide2_thumb.jpg" alt="Chalet"></li>
+            <li class="" style="width: 215px; float: left; display: block;"><img src="/assets/slide3_thumb.jpg" alt="Ski"></li>
+            <li style="width: 215px; float: left; display: block;" class=""><img src="/assets/slide4_thumb.jpg" alt="Golf "></li>
+          </ul>
+        </div>
+        <ul class="flex-direction-nav">
+          <li><a class="flex-prev flex-disabled" href="#">Previous</a></li>
+          <li><a class="flex-next flex-disabled" href="#">Next</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- end of slider -->
+
+  <script type="text/javascript">
+  jQuery(window).load(function() {
+      jQuery('#carousel').flexslider({
+          animation: "slide",
+          controlNav: false,
+          animationLoop: false,
+          slideshow: false,
+          itemWidth: 215,
+          itemMargin: 20,
+          asNavFor: '#slider'
+      });
+      jQuery('#slider').flexslider({
+          animation: "slide",
+          controlNav: false,
+          animationLoop: true,
+          slideshow: true,
+          slideshowSpeed: 4500,
+          sync: "#carousel",
+          start: function(slider){
+              jQuery('body').removeClass('loading');
+          }
+      });
+  });
+  </script>
+<% end %>

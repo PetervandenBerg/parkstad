@@ -1,0 +1,60 @@
+<% if user_signed_in? %> 
+  <div id="primary" class="site-content">
+    <div id="content" role="main">
+      <article id="post-5" class="post-5 page type-page status-publish hentry">
+        <header class="entry-header">
+          <h1 class="entry-title">Eerstvolgende training/wedstrijd</h1>
+        </header>
+      </article>
+
+      <div id="volgende">
+        <h1> Datum </h1>
+        <p><%= @event.start_at.strftime("%b %d, %Y")%></p>
+        <p><%= @event.name %></p>
+
+        <h1>Totaal aanwezig:</h1>
+          <p><%= @there_count %> man</p>
+
+        <h1>Aanwezig zijn:</h1>
+          <% @there.each do |x| %>
+          <p><%= x.user_name %></p>
+          <% end %><br>
+      </div><br>
+
+    <header class="entry-header">    
+      <h1 class="entry-title">Laatste berichten</h1>
+    </header>
+    <div id="easybook">
+      <% @messages.each do |message| %>
+        <p class="clr"></p>
+        <div class="easy_frame">
+          <div class="easy_top">
+            <div class="easy_top_left">
+              <strong class="easy_big" id="gbentry_74"><%= message.user_name %></strong>
+              <strong class="easy_small"><%= message.created_at.to_s(:short) %></strong>
+            </div>
+            <div class="easy_top_right">
+             <strong class="easy_small"><%= link_to 'Pas text aan', edit_message_path(message) %></strong>
+            </div>
+            <div style="clear: both;"></div>
+          </div>
+          <div class="easy_content">
+            <p><%= message.msg %></p>
+            <% if admin_signed_in? %>
+              <%= link_to 'Show', message %>
+              <%= link_to 'Edit', edit_message_path(message) %>
+              <%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="center hero-unit">
+      <h1>Welkom op de website van Parkstad 3</h1>
+      <p> Deze website is geheel voor en door spelers van Parkstad.</p><br>
+
+      <p> <%= link_to 'Meld je nu aan!',  new_user_registration_path , class: "btn btn-large btn-primary" %> </p>
+  </div>
+<% end %>

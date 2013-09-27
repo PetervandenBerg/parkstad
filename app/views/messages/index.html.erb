@@ -1,0 +1,41 @@
+<div id="container">
+  <div id="primary" class="site-content">
+    <div id="content" role="main">
+      <article id="post-5" class="post-5 page type-page status-publish hentry">
+        <header class="entry-header">
+          <h1 class="entry-title">Berichten</h1>
+        </header>
+      </article>
+     
+      <div id="easybook">
+        <% @messages.each do |message| %>
+          <div class="easy_frame">
+              <div class="easy_top_left">
+                <strong class="easy_big" id="gbentry_74"><%= message.user_name %></strong>
+                <strong class="easy_small"><%= message.created_at.to_s(:short) %></strong>
+              </div>
+              <div class="easy_top_right">
+                <strong class="easy_small"><%= link_to 'Laat bericht zien.', message_path(message) %></strong>
+                <% if current_user.name == message.user_name %>
+                  <strong class="easy_small"><%= link_to 'Pas text aan', edit_message_path(message) %></strong>
+                  <strong class="easy_small"><%= link_to 'Verwijder Bericht', message, method: :delete, data: { confirm: 'Are you sure?' } %></strong>
+              </div>
+                <% end %>
+              <div style="clear: both;"></div>
+            <div class="easy_content">
+              <p><%= message.msg %></p>
+              <% if admin_signed_in? %>
+                <%= link_to 'Show', message %>
+                <%= link_to 'Edit', edit_message_path(message) %>
+                <%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+             </div>
+          </div>
+        <% end %>
+      </div>
+      <h1>Nieuw Bericht</h1>
+
+      <%= render 'messages/form' %>
+    </div>
+  </div>
+</div>

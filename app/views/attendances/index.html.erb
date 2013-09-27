@@ -1,0 +1,27 @@
+<h1>Aanwezigheidslijst</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Naam</th>
+      <th>Aanwezig</th>
+      <th>Bericht</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attendances.each do |attendance| %>
+      <tr>
+        <td><%= attendance.user_id %></td>
+        <td><%= attendance.attending %></td>
+        <td><%= attendance.msg %></td>
+        <td><%= link_to 'Pas aan', edit_event_attendance_path(@event, @attendance) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

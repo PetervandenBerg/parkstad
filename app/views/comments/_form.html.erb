@@ -1,0 +1,11 @@
+<%= simple_form_for [@message, @comment] do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :comment, label: '', placeholder: 'Plaats hier je bericht', as: :text %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit, 'Plaats!' %>
+  </div>
+<% end %>
