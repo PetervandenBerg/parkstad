@@ -13,7 +13,7 @@
       <thead>
         <tr>
           <th>Naam</th>
-          <th>Aanwezig</th>
+          <th>Aanwezig/Afwezig</th>
           <th>Bericht</th>
         </tr>
       </thead>
@@ -22,7 +22,12 @@
         <% @attendances.each do |attendance| %>
           <tr>
             <td><%= attendance.user_name %></td>
-            <td><%= attendance.attending %></td>
+            
+            <% if attendance.attending == true %>
+              <td>Aanwezig</td>
+            <% else %>
+              <td>Afwezig</td>
+            <% end %>
             <td><%= attendance.msg %></td>
               <% if current_user.id == attendance.user_id %>
             <td><%= link_to 'Verander', edit_event_attendance_path(@event, attendance) %></td>
