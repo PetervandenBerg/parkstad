@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
   has_many :attendances
   has_many :comments
 
-  validates :user_name, presence: true
+  validates :name, presence: true
 
 end

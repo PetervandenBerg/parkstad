@@ -17,8 +17,8 @@
 			      <div class="easy_top_right">
 			        <% if current_user.name == @message.user_name %>
 			          <strong class="easy_small"><%= link_to 'Pas text aan', edit_message_path(@message) %></strong>
-			      </div>
 			        <% end %>
+			      </div>
 			      <div style="clear: both;"></div>
 			    <div class="easy_content">
 			      <p><%= @message.msg %></p>
@@ -42,8 +42,8 @@
 			        <% if current_user.name == comment.user_name %>
 			        	<strong class="easy_small"><%= link_to 'Verwijder Bericht', [@message, comment], method: :delete, data: { confirm: 'Are you sure?' } %></strong>
 			          <strong class="easy_small"><%= link_to 'Pas text aan', edit_message_comment_path(@message, comment) %></strong>
-			      </div>
 			        <% end %>
+			      </div>
 			      <div style="clear: both;"></div>
 			    <div class="easy_content">
 			      <p><%= comment.comment %></p>
