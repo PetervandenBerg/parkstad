@@ -34,7 +34,9 @@
               <strong class="easy_small"><%= message.created_at.to_s(:short) %></strong>
             </div>
             <div class="easy_top_right">
+              <% if current_user.name == message.user_name %>
              <strong class="easy_small"><%= link_to 'Pas text aan', edit_message_path(message) %></strong>
+              <% end %>
              <strong class="easy_small"><%= link_to 'Ga naar bericht', message_path(message) %></strong>
             </div>
             </div>
