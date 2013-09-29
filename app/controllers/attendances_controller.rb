@@ -30,9 +30,8 @@ class AttendancesController < ApplicationController
   # POST /attendances
   # POST /attendances.json
   def create
-    @attendance = @event.attendances.build(attendance_params)
-    @attendance.user_id = current_user.id
-    @attendance.user_name = current_user.name
+    @attendance = Attendance.find_or_initialize_by(user_id: current_user.id)
+    @attendance.attributes = attendance_params
 
     respond_to do |format|
       if @attendance.save

@@ -1,6 +1,5 @@
 class Attendance < ActiveRecord::Base
 	belongs_to :event
-	belongs_to :users
+	belongs_to :user
 
-	validates :attending, presence: true
 end

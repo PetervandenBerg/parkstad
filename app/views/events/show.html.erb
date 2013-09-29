@@ -23,7 +23,7 @@
       <tbody>
         <% @attendances.each do |attendance| %>
           <tr>
-            <td><%= attendance.user_name %></td>
+            <td><%= attendance.user.name %></td>
             
             <% if attendance.attending == true %>
               <td>Aanwezig</td>
