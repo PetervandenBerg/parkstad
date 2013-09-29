@@ -2,7 +2,7 @@ class AttendancesController < ApplicationController
   before_action :set_attendance, only: [:show, :edit, :update, :destroy]
   before_action :get_event
   before_filter :authenticate_user!
-  before_filter :authenticate_admin!
+  before_filter :authenticate_admin!, only: [:destroy]
   # GET /attendances
   # GET /attendances.json
   def index

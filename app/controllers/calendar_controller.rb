@@ -1,7 +1,7 @@
 class CalendarController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
-  before_filter :authenticate_admin!
+  before_filter :authenticate_admin!, only: [:destroy]
 
  def index
     @month = (params[:month] || Time.zone.now.month).to_i
