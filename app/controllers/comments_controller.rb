@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_action :get_message
   before_filter :authenticate_user!
+  before_filter :authenticate_admin!
   # GET /comments
   # GET /comments.json
   def index

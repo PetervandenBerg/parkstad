@@ -12,6 +12,9 @@
           <% if user_signed_in? %> 
             <li><%= link_to "Kalender", calendar_path  %></li>
             <li><%= link_to "Berichten", messages_path  %></li>
+          <% elsif admin_signed_in? %>
+            <li><%= link_to "Kalender", calendar_path  %></li>
+            <li><%= link_to "Berichten", messages_path  %></li>
           <% end %>
             <li><%= link_to "Contact", pages_contact_path  %></li>
         </ul>
