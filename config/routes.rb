@@ -14,7 +14,8 @@ Parkstad::Application.routes.draw do
   devise_for :admins
 
   get "pages/home"
- 
+  get "pages/contact"
+
   root 'pages#home'
 
 end

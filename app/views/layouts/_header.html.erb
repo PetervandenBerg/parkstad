@@ -8,12 +8,13 @@
       </a>
       <a class="brand" href="/">Parkstad 3</a>
       <div class="container nav-collapse">
-        <% if user_signed_in? %> 
-          <ul class="nav">
+        <ul class="nav">
+          <% if user_signed_in? %> 
             <li><%= link_to "Kalender", calendar_path  %></li>
             <li><%= link_to "Berichten", messages_path  %></li>
-          </ul>
-        <% end %>
+          <% end %>
+            <li><%= link_to "Contact", pages_contact_path  %></li>
+        </ul>
 
        <ul class="nav pull-right">
             <% if admin_signed_in? %>
