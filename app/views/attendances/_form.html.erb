@@ -1,8 +1,8 @@
 <%= simple_form_for [@event, @attendance] do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :attending, label: "" %>
-  <%= f.input :msg, placeholder: 'Plaats eventueel een bericht', label: "Aanwezig/Afwezig" %><br>
+  <%= f.input :attending, label: "Vink aan om je aanwezigheid door te geven" %>
+  <%= f.input :msg, placeholder: 'Plaats eventueel een bericht', label: "Voeg bericht toe:" %><br>
   <%= f.input :event_id, :as => :hidden, :value => @event.id %>
   
   <%= f.button :submit, 'Bevestig' %><br>
