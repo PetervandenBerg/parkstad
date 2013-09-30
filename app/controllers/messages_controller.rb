@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
 
   # GET /messages/1/edit
   def edit
-    @message = Message.find(params[:id])
+    @message = current_user.messages.find(params[:id])
   end
 
   # POST /messages
