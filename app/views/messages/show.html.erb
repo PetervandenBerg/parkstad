@@ -43,6 +43,9 @@
 			        	<strong class="easy_small"><%= link_to 'Verwijder Bericht', [@message, comment], method: :delete, data: { confirm: 'Are you sure?' } %></strong>
 			          <strong class="easy_small"><%= link_to 'Pas text aan', edit_message_comment_path(@message, comment) %></strong>
 			        <% end %>
+			        <% if admin_signed_in? %>
+			        <strong class="easy_small"><%= link_to 'Verwijder Bericht', [@message, comment], method: :delete, data: { confirm: 'Are you sure?' } %></strong>
+			        <% end %>
 			      </div>
 			      <div style="clear: both;"></div>
 			    <div class="easy_content">

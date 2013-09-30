@@ -21,6 +21,10 @@
                   <strong class="easy_small"><%= link_to 'Pas text aan', edit_message_path(message) %></strong>
                   <strong class="easy_small"><%= link_to 'Verwijder Bericht', message, method: :delete, data: { confirm: 'Are you sure?' } %></strong>
                 <% end %>
+                  <% if admin_signed_in? %>
+                    <strong class="easy_small"><%= link_to 'Verwijder Bericht', message, method: :delete, data: { confirm: 'Are you sure?' } %></strong>
+                  <% end %>
+
               </div>
               <div style="clear: both;"></div>
             <div class="easy_content">

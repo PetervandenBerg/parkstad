@@ -1,7 +1,6 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
-  before_filter :authenticate_admin!, only: [:destroy]
 
   # GET /messages
   # GET /messages.json
@@ -23,6 +22,7 @@ class MessagesController < ApplicationController
 
   # GET /messages/1/edit
   def edit
+    @message = Message.find(params[:id])
   end
 
   # POST /messages
@@ -30,6 +30,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.user_name = current_user.name
+    @message.user_id = current_user.id
 
     respond_to do |format|
       if @message.save
@@ -74,6 +75,6 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.require(:message).permit(:msg, :user_name)
+      params.require(:message).permit(:msg, :user_name, :user_id)
     end
 end

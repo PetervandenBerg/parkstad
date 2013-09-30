@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_action :get_message
   before_filter :authenticate_user!
-  before_filter :authenticate_admin!, only: [:destroy]
   # GET /comments
   # GET /comments.json
   def index
@@ -33,6 +32,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @message.comments.build(comment_params)
     @comment.user_name = current_user.name
+    @comment.user_id = current_user.id
 
     respond_to do |format|
       if @comment.save
@@ -84,6 +84,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:comment, :user_name)
+      params.require(:comment).permit(:comment, :user_name, :user_id)
     end
 end
