@@ -15,7 +15,7 @@
                 <strong class="easy_small"><%= message.created_at.to_s(:short) %></strong>
               </div>
               <div class="easy_top_right">
-                <strong class="easy_small"><%= link_to 'Laat commentaar zien.', message_path(message) %></strong>
+                <strong class="easy_small"><%= link_to "Commentaar(#{message.comments.count}).", message_path(message) %></strong>
                 <strong class="easy_small"><%= link_to 'Reageer op bericht.', [message, @comment]%></strong>
                 <% if current_user.name == message.user_name %>
                   <strong class="easy_small"><%= link_to 'Pas text aan', edit_message_path(message) %></strong>
