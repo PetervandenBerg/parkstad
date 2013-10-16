@@ -38,6 +38,9 @@
           </div>
         <% end %>
       </div>
+
+      <%= will_paginate @messages %>
+
       <h1>Nieuw Bericht</h1>
 
       <%= render 'messages/form' %>

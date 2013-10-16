@@ -7,7 +7,7 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "therubyracer"
 gem 'aws-sdk', '1.9.5'
-gem 'simple_form'
+gem 'simple_form', '1.4.1'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'event-calendar', :require => 'event_calendar'

@@ -10,7 +10,7 @@
       <div class="container nav-collapse">
         <ul class="nav">
           <% if user_signed_in? %> 
-            <li><%= link_to "Kalender", calendar_path  %></li>
+            <li><%= link_to "Kalender", calendar_path, method: :get  %></li> 
             <li><%= link_to "Berichten", messages_path  %></li>
           <% elsif admin_signed_in? %>
             <li><%= link_to "Kalender", calendar_path  %></li>
@@ -26,8 +26,22 @@
               <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
               <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
             <% else %>
-              <li><%= link_to "Sign up", new_user_registration_path %></li>
-              <li><%= link_to "Login", new_user_session_path %></li>
+              <li><%= link_to "Sign up", new_user_registration_path , id: "signup" %></li>
+              <li><%= link_to 'Log-in', '#', id: "loginUrl", method: :get %></li>
+              
+              <div class ='loginform'>
+                <%= simple_form_for(User.new, :url => '/users/sign_in/') do |f| %>
+                  <div class="form-inputs">
+                    <%= f.input :email, :autofocus => true, label: false, placeholder: "Email", input_html: { id: 'navbar_email'} %>
+                    <%= f.input :password, label: false, placeholder: "Wachtwoord", input_html: { id: 'navbar_password'} %>
+                  </div>
+
+                  <div class="form-actions">
+                    <%= f.button :submit, "Sign in" %>
+                  </div>
+                <% end %>
+              </div>
+
             <% end %>
         </ul>  
         </div><!--/.nav-collapse -->

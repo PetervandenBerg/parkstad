@@ -10,7 +10,7 @@
       <div id="volgende">
         <h1> Datum </h1>
         <p><%= @event.start_at.strftime("%b %d, %Y")%></p>
-        <p><%= @event.name %></p>
+        <p><%= @event.name.upcase %></p>
 
         <h1>Totaal aanwezig:</h1>
           <p><%= @there_count %> man</p>
@@ -19,6 +19,7 @@
           <% @there.each do |x| %>
           <p><%= x.user.name %></p>
           <% end %><br>
+          <p><%= link_to 'Geef direct je aanwezigheid door', event_path(@event) %></p>
       </div><br>
 
     <header class="entry-header">    
@@ -59,6 +60,8 @@
       <h1>Welkom op de website van Parkstad 3</h1>
       <p> Deze website is geheel voor en door spelers van Parkstad.</p><br>
 
-      <p> <%= link_to 'Meld je nu aan!',  new_user_registration_path , class: "btn btn-large btn-primary" %> </p>
+      <p> <%= link_to 'Al aangemeld ? Log dan hier in.',  new_user_session_path , class: "btn btn-large btn-primary" %> </p><br>
+
+      <p> <%= link_to 'Nog niet aangemeld ? Meld je nu aan!',  new_user_registration_path , class: "btn btn-small-btn-primary" %> </p>
   </div>
 <% end %>
