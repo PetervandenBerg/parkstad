@@ -5,6 +5,7 @@
   <%= f.text_field :start_at, placeholder: 'Kies Datum' %><br>
   <%= f.hidden_field :end_at, :value => :start_at %>
 	<%= f.hidden_field :all_day, :value => true %>
+	<%= f.collection_select :kind, [[Event::TRAINING, 'Training'] ,[Event::WEDSTRIJD, 'Wedstrijd'], [Event::ANDERS, 'Anders']], :first, :last %><br>
 
   <%= f.button :submit, 'Maak nieuwe actie' %>
 <% end %>

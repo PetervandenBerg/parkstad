@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131016123325) do
+ActiveRecord::Schema.define(version: 20131017094729) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20131016123325) do
     t.datetime "updated_at"
     t.boolean  "all_day"
     t.integer  "user_id"
+    t.integer  "kind"
   end
 
   create_table "messages", force: true do |t|
@@ -84,6 +85,8 @@ ActiveRecord::Schema.define(version: 20131016123325) do
     t.datetime "updated_at"
     t.string   "name"
     t.boolean  "guest"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

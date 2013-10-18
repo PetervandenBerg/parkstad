@@ -8,4 +8,8 @@ class Event < ActiveRecord::Base
 
 	validates :name, presence: true
 	validates :start_at, presence: true
+
+  TRAINING = 0
+  WEDSTRIJD = 1
+  ANDERS= 2
 end

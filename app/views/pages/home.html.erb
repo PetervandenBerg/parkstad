@@ -19,7 +19,11 @@
           <% @there.each do |x| %>
           <p><%= x.user.name %></p>
           <% end %><br>
-          <p><%= link_to 'Geef direct je aanwezigheid door', event_path(@event) %></p>
+          <% unless @event.start_at.to_s(:short).to_date == Date.today %>
+            <p><%= link_to 'Geef direct je aanwezigheid door', event_path(@event) %></p>
+          <% else %>
+            <p>Het doorgeven of wijzigen van je aanwezigheid op de speeldag is niet mogelijk.</p>
+          <% end %>
       </div><br>
 
     <header class="entry-header">    
@@ -60,8 +64,8 @@
       <h1>Welkom op de website van Parkstad 3</h1>
       <p> Deze website is geheel voor en door spelers van Parkstad.</p><br>
 
-      <p> <%= link_to 'Al aangemeld ? Log dan hier in.',  new_user_session_path , class: "btn btn-large btn-primary" %> </p><br>
+      <p><%= link_to 'Al aangemeld ? Log dan hier in.',  new_user_session_path , class: "btn btn-large btn-primary" %></p><br>
 
-      <p> <%= link_to 'Nog niet aangemeld ? Meld je nu aan!',  new_user_registration_path , class: "btn btn-small-btn-primary" %> </p>
+      <p><%= link_to 'Nog niet aangemeld ? Meld je nu aan!',  new_user_registration_path , class: "btn btn-small-btn-primary" %></p>
   </div>
 <% end %>
