@@ -6,4 +6,8 @@ class PagesController < ApplicationController
 	@there = @event.attendances.where(attending: true)
 	@there_count = @event.attendances.where(attending: true).count
   end
+
+  def charts
+  	@users = User.all.order("sign_in_count DESC").first(4)
+  end
 end

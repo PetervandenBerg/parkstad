@@ -1,8 +1,6 @@
-require 'pp'
-
 namespace :mail do	
 	desc "Checks who to send e-mail to"
-	task :receivers => :environment do
+	task :reminder => :environment do
 		if Time.now.wednesday?
 			next_event = Event.where('start_at >= ?', Date.today).order("start_at ASC").first;
 			users_there = next_event.attendances.where(attending: true).collect(&:user);
@@ -20,7 +18,7 @@ namespace :mail do
 	end 
 
 	desc "If attendance is blank, set to false"
-	task :autoattendance => :environment do
+	task :cancel_training => :environment do
 		if Time.now.thursday?
 			next_event = Event.where('start_at >= ?', Date.today).order("start_at ASC").first;
 
@@ -36,7 +34,7 @@ namespace :mail do
 
 	    attending_next_event = next_event.attendances.where(attending: true)
 
-			if attending_next_event.count < 8
+			if attending_next_event.count < 7
 				User.where(guest: false).each { |u| ParkstadMailer.cancel_training(u).deliver }
 			end 
   	end
