@@ -31,9 +31,11 @@
               <td>Afwezig</td>
             <% end %>
             <td><%= attendance.msg %></td>
+            <% unless @event.start_at.to_s(:short).to_date == Date.today %>
               <% if current_user.id == attendance.user_id %>
-            <td><%= link_to 'Verander', edit_event_attendance_path(@event, attendance) %></td>
+                <td><%= link_to 'Verander', edit_event_attendance_path(@event, attendance) %></td>
               <% end %>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
